@@ -48,6 +48,4 @@ function getCountry() {
     alert(country);
 }
 
-/*$("#country-ul").click(function(){
-    alert($("#country").text());
-});*/
+
