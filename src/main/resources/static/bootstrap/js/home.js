@@ -1,3 +1,9 @@
+$(document).ready(function () {
+   $(".navbar-brand").click(function () {
+       window.location.reload();
+   });
+});
+
 $(document).ready(function(){
     $(".dropdown-menu li").click(function() {
         var param = $(this).children("a").text();
@@ -19,7 +25,6 @@ $(document).ready(function(){
                         $("#getFilms").attr("style","visibility:visible");
                         var str = "";
                         $.each(data,function (i,item) {
-                            alert(item.filmScore);
                             str += ( "            <div class=\"col-md-3\">\n" +
                                 "                <div class=\"thumbnail\">\n" +
                                 "                    <a id=\"img\">\n" +
@@ -43,6 +48,7 @@ $(document).ready(function(){
 
     });
 });
+
 
 function getVagueFilm() {
     var searchContent = $("#search").val();
