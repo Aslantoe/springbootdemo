@@ -43,8 +43,12 @@ public class FilmController {
         }else{
             return filmService.getVagueFilms(name);
         }
-
     }
 
+    @RequestMapping(value = "getFilmsByNav",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Film> getFilmsByNav(String country, String director, String genre){
+        return filmService.gerFilmsByNav(country, director, genre);
+    }
 
 }

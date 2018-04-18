@@ -33,4 +33,13 @@ public interface FilmService {
      * @return 电影集合
      */
     List<Film> getVagueFilms(String name);
+
+    /**
+     *  根据导航栏点击获取电影
+     * @param country 国家
+     * @param director 导演
+     * @param genre 类型
+     * @return 电影集合
+     */
+    List<Film> gerFilmsByNav(String country,String director,String genre);
 }

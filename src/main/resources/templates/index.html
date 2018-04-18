@@ -21,18 +21,18 @@
                 </div>
                 <div class="col-md-3">
                     <ul class="nav navbar-nav">
-                        <li  class="dropdown">
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">地区<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
+                            <ul id="country" class="dropdown-menu">
                                 <li th:each="country : ${countries}">
-                                    <a th:text="${country}" onclick="getCountry()"  href="#"></a>
+                                    <a href="#" th:text="${country}"></a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">导演<b class="caret"></b></a>
                             <ul  class="dropdown-menu">
-                                <li  th:each="director : ${directors}" >
+                                <li th:each="director : ${directors}" >
                                     <a th:text="${director}" href="#"></a>
                                 </li>
                             </ul>
@@ -72,18 +72,6 @@
 <div id="getFilms" class="container gallery-container"  style="display: none">
     <div class="tz-gallery">
         <div id="getFilms-row" class="row">
-<!--
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a id="img">
-                       &lt;!&ndash; <img src="" alt="" style="height: 345px;width: 100%">&ndash;&gt;
-                    </a>
-                    <div class="caption">
-                        <h3></h3>
-                        <p style="text-overflow:ellipsis;width: 100px"></p>
-                    </div>
-                </div>
-            </div>-->
 
         </div>
     </div>
@@ -222,6 +210,6 @@
 </div>
 
 <script src="/bootstrap/js/jquery-3.1.1.js"></script>
-<script src="/bootstrap/js/index.js"></script>
+<script src="/bootstrap/js/home.js"></script>
 </body>
 </html>

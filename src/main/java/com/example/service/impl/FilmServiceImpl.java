@@ -39,4 +39,10 @@ public class FilmServiceImpl implements FilmService {
     public List<Film> getVagueFilms(String name) {
         return mapper.getVagueFilms(name);
     }
+
+    @Override
+    public List<Film> gerFilmsByNav(String country, String director, String genre) {
+        return mapper.getFilmsByNav(country,director,genre);
+    }
+
 }

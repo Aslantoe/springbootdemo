@@ -23,6 +23,15 @@ public class FilmMapperTest {
     private FilmMapper mapper;
 
     @Test
+    public void getFilmsByNav(){
+        List<Film> list = mapper.getFilmsByNav(null,"雷德利·斯科特",null);
+        System.out.println("------------");
+        for (Film film : list) {
+            System.out.println(film.toString());
+        }
+    }
+
+    @Test
     public void getVagueCountry() throws Exception {
         List<Film> list = mapper.getVagueFilms("星");
         System.out.println("****************");
