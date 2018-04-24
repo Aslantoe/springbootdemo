@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author jack
- * @date 2018/4/24  19:18
+ * @date 2018/4/24 19:18
  */
 public abstract class BaseService<T> implements IService<T> {
     @Autowired
