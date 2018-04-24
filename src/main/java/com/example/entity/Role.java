@@ -1,25 +1,23 @@
 package com.example.entity;
 
-import java.util.List;
+import javax.persistence.*;
 
 /**
  * @author jack
  * @date 2018/4/20 0020 15:02
  */
+@Table(name = "role")
 public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private Integer roleId;
+    @Column(name = "role_name")
     private String roleName;
+    @Column(name = "role_desc")
     private String roleDesc;
+    @Column(name = "role_available")
     private Boolean roleAvailable = Boolean.FALSE;
-    /**
-     * 角色--权限关系：多对多
-     */
-    private List<Permission> permissions;
-    /**
-     * 用户--角色关系:多对多
-     *  一个角色对应多个用户
-     */
-    private List<UserInfo> userInfos;
 
     public Integer getRoleId() {
         return roleId;
@@ -53,21 +51,6 @@ public class Role {
         this.roleAvailable = roleAvailable;
     }
 
-    public List<Permission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
-    }
-
-    public List<UserInfo> getUserInfos() {
-        return userInfos;
-    }
-
-    public void setUserInfos(List<UserInfo> userInfos) {
-        this.userInfos = userInfos;
-    }
 
     @Override
     public String toString() {
@@ -76,8 +59,6 @@ public class Role {
                 ", roleName='" + roleName + '\'' +
                 ", roleDesc='" + roleDesc + '\'' +
                 ", roleAvailable=" + roleAvailable +
-                ", permissions=" + permissions +
-                ", userInfos=" + userInfos +
                 '}';
     }
 }

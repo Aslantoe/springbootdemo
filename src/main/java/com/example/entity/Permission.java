@@ -1,24 +1,32 @@
 package com.example.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author jack
- * @date 2018/4/20 0020 15:07
+ * @date 2018/4/20  15:07
  */
+@Table(name = "permission")
 public class Permission implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "perms_id")
     private Integer permsId;
+    @Column(name = "perms_desc")
     private String permsDesc;
+    @Column(name = "perms_res_type")
     private String permsResType;
+    @Column(name = "perms_res_url")
     private String permsResUrl;
-    private String permsParaentId;
+    @Column(name = "perms_parent_id")
+    private String permsParentId;
+    @Column(name = "perms_parent_ids")
     private String permsParentIds;
+    @Column(name = "perms_available")
     private Integer permsAvailable;
-    /**
-     * 权限--角色关系:多对多
-     */
-    private List<Role> roles;
+
 
     public Integer getPermsId() {
         return permsId;
@@ -53,11 +61,11 @@ public class Permission implements Serializable {
     }
 
     public String getPermsParaentId() {
-        return permsParaentId;
+        return permsParentId;
     }
 
     public void setPermsParaentId(String permsParaentId) {
-        this.permsParaentId = permsParaentId;
+        this.permsParentId = permsParaentId;
     }
 
     public String getPermsParentIds() {
@@ -76,13 +84,6 @@ public class Permission implements Serializable {
         this.permsAvailable = permsAvailable;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 
     @Override
     public String toString() {
@@ -91,10 +92,9 @@ public class Permission implements Serializable {
                 ", permsDesc='" + permsDesc + '\'' +
                 ", permsResType='" + permsResType + '\'' +
                 ", permsResUrl='" + permsResUrl + '\'' +
-                ", permsParaentId='" + permsParaentId + '\'' +
+                ", permsParentId='" + permsParentId + '\'' +
                 ", permsParentIds='" + permsParentIds + '\'' +
                 ", permsAvailable=" + permsAvailable +
-                ", roles=" + roles +
                 '}';
     }
 }
