@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -8,22 +9,33 @@ import java.util.List;
  * @author jack
  * @date 2018/4/20 0020 14:52
  */
+@Table(name = "userinfo")
 public class UserInfo implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Integer userId;
+    @Column(name = "user_nickname")
     private String userNickName;
+    @Column(name = "user_name")
     private String userName;
+    @Column(name = "user_password")
     private String userPassword;
+    @Column(name = "user_salt")
     private String userSalt;
+    @Column(name = "user_gender")
     private String userGender;
+    @Column(name = "user_birthday")
     private Date userBirthday;
+    @Column(name = "user_city")
     private String userCity;
+    @Column(name = "user_email")
     private String userEmail;
+    @Column(name = "user_avatar")
     private String userAvatar;
+    @Column(name = "user_state")
     private Integer userState;
-    /**
-     * 一个用户具有多个角色
-     */
-    private List<Role> roleList;
+
 
     public Integer getUserId() {
         return userId;
@@ -113,13 +125,6 @@ public class UserInfo implements Serializable{
         this.userState = userState;
     }
 
-    public List<Role> getRoleList() {
-        return roleList;
-    }
-
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
-    }
 
     /**
      * 密码盐.
@@ -143,7 +148,6 @@ public class UserInfo implements Serializable{
                 ", userEmail='" + userEmail + '\'' +
                 ", userAvatar='" + userAvatar + '\'' +
                 ", userState=" + userState +
-                ", roleList=" + roleList +
                 '}';
     }
 }

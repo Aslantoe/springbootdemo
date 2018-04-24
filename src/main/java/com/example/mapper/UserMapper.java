@@ -2,6 +2,7 @@ package com.example.mapper;
 
 
 import com.example.entity.UserInfo;
+import com.example.util.MyMapper;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
@@ -11,7 +12,7 @@ import org.apache.ibatis.mapping.FetchType;
  * @author jack
  * @date 2018/4/20  16:28
  */
-public interface UserMapper {
+public interface UserMapper extends MyMapper<UserInfo> {
 
     /**
      * 根据姓名查找用户信息

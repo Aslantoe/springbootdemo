@@ -1,11 +1,14 @@
 package com.example.mapper;
 
 import com.example.entity.UserInfo;
+import com.example.service.UserInfoService;
+import com.example.service.impl.UserInfoServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import tk.mybatis.mapper.entity.Example;
 
 /**
  * @author jack
@@ -14,17 +17,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserMapperTest {
+
     @Autowired
-    private UserMapper mapper;
+    private UserInfoServiceImpl service;
 
     @Test
     public void getUserInfoByName(){
-        UserInfo userInfo = mapper.getUserInfoByUserName("jack");
-        System.out.println(userInfo.toString());
+
+       UserInfo userInfo = service.getUserInfoByName("admin");
+       System.out.println(userInfo.toString());
+
     }
     @Test
     public void getUserInfoByEmail(){
-        UserInfo userInfo = mapper.getUserInfoByUserEmail("jackbu1994@gmail.com");
-        System.out.println(userInfo.toString());
+       UserInfo userInfo = service.getUserInfoByEmail("jackbu1994@gmail.com");
+      System.out.println(userInfo.toString());
     }
+
 }
