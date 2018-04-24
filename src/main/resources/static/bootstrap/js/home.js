@@ -1,9 +1,11 @@
+"use strict";
 $(document).ready(function () {
    $(".navbar-brand").click(function () {
        window.location.reload();
    });
 });
 
+/*点击导航条检索*/
 $(document).ready(function(){
     $(".dropdown-menu li").click(function() {
         var param = $(this).children("a").text();
@@ -28,7 +30,7 @@ $(document).ready(function(){
                             str += ( "            <div class=\"col-md-3\">\n" +
                                 "                <div class=\"thumbnail\">\n" +
                                 "                    <a id=\"img\">\n" +
-                                "                       <img src=\" "+item.filmGallery+" \" alt=\" "+item.filmCnName+" \" style=\"height: 345px;width: 100%\">\n" +
+                                "                      <a href='####'> <img src=\" "+item.filmGallery+" \" alt=\" "+item.filmCnName+" \" style=\"height: 345px;width: 100%\">\n </a>" +
                                 "                    </a>\n" +
                                 "                    <div class=\"caption\">\n" +
                                 "                        <h3>"+item.filmCnName+"</h3>\n" +
@@ -49,7 +51,7 @@ $(document).ready(function(){
     });
 });
 
-
+/*输入搜索*/
 function getVagueFilm() {
     var searchContent = $("#search").val();
     $.ajax({

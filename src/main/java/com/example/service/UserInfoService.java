@@ -1,0 +1,24 @@
+package com.example.service;
+
+import com.example.entity.UserInfo;
+
+/**
+ * @author jack
+ * @date 2018/4/23 15:57
+ */
+public interface UserInfoService {
+    /**
+     * 根据用户姓名获取用户信息
+     * @param name 姓名
+     * @return 用户信息
+     */
+    UserInfo getUserInfoByName(String name);
+    /**
+     * 根据用户邮箱获取用户信息
+     * @param email 邮箱
+     * @return 用户信息
+     */
+    UserInfo getUserInfoByEmail(String email);
+
+
+}

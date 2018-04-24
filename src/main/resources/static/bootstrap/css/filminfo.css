@@ -1,0 +1,31 @@
+/*****
+filminfo.css
+*****/
+
+/*资源详情*/
+
+#director{display: inline-block;margin-top: 35px}
+#actor{display: inline-block}
+.resource-con{ padding-top:10px;}
+.resource-con .fl-img{ width:216px;}
+.resource-con .fl-img .imglink{ width:216px; height:288px; overflow:hidden;}
+.resource-con .fl-img .imglink img{ width:100%;}
+.resource-con .fl-img tr.cur td{ color:#F14400;}
+.resource-con .fl-info{ padding-left:0;  }
+.resource-con ul{ padding-left:5px;}
+.resource-con li{ padding:0 0 6px 0; color:#1a1a1a;}
+.resource-con li.ib{ display:inline-block; width:45%;}
+.resource-con li.mg{ margin-top:30px;}
+.resource-con li span{ color:#19527a;}
+.resource-desc{ position:relative; border-top:1px dotted #c9c9c9; padding-top:15px; margin-top:25px;}
+.btn-addfav a{ display:block; background:url(../images/addfav.png) no-repeat; width:212px; height:44px; line-height:40px; font-size:18px; font-family:"微软雅黑"; text-shadow:1px 1px 2px #333; color:#fff; text-indent:75px; margin:5px auto; overflow:hidden;cursor: pointer}
+.btn-addfav a.notfaved{ background-position:0 -44px;}
+.btn-addfav a:hover{ background-position:0 -88px;}
+.brieftitle{color: #5cd259
+}
+
+
+
+
+
+
