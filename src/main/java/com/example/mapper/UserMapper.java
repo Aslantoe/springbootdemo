@@ -16,6 +16,7 @@ public interface UserMapper extends MyMapper<UserInfo> {
 
     /**
      * 根据姓名查找用户信息
+     * 没有用到，用了tk.mybatis封装好的方法。---可以通过写sql语句来扩展复杂的操作
      * @param name 姓名
      * @return 用户信息
      */
