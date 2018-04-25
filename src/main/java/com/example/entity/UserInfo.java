@@ -127,11 +127,10 @@ public class UserInfo implements Serializable{
 
 
     /**
-     * 密码盐.
-     * @return
+     * 密码盐
      */
     public String getCredentialsSalt(){
-        return this.userName + this.userSalt;
+        return this.userEmail + this.userSalt;
     }
 
     @Override
