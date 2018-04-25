@@ -22,7 +22,7 @@ public interface PermissionMapper extends MyMapper<Permission> {
             "LEFT JOIN user_role ur " +
             "ON rp.role_id = ur.role_id " +
             "<where>"+
-            "<if test=\"uid != null \">ur.user_id = #{uid}</if> " +
+            "<if test=\"userId != null \">ur.user_id = #{userId}</if> " +
             "<if test=\"type != null \"> AND p.perms_res_type = #{type}</if> " +
             "GROUP BY  p.perms_id"+
             "</where>"+
