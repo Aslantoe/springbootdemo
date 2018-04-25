@@ -26,8 +26,8 @@ public class PermissionMapperTest {
     @Test
     public void loadUserPermissions() throws Exception {
         Map<String,Object> map = new HashMap<>();
-        map.put("uid",2);
-        map.put("type","test");
+        map.put("userId",2);
+       // map.put("type","test");
         List<Permission> list = mapper.loadUserPermissions(map);
         for (Permission permission : list) {
             System.out.println(permission.toString());
