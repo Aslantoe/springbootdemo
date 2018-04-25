@@ -1,7 +1,5 @@
-package com.example.config;
+package com.example.shiro;
 
-import com.example.entity.Permission;
-import com.example.entity.Role;
 import com.example.entity.UserInfo;
 import com.example.service.UserInfoService;
 import org.apache.shiro.authc.AuthenticationException;
@@ -9,7 +7,6 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -26,7 +23,7 @@ public class MyShiroRealm extends AuthorizingRealm{
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        System.out.println("权限配置-->MyShiroRealm.doGetAuthorizationInfo");
+       /* System.out.println("权限配置-->MyShiroRealm.doGetAuthorizationInfo");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         UserInfo userInfo = (UserInfo) principals.getPrimaryPrincipal();
         for (Role role : userInfo.getRoleList()) {
@@ -36,7 +33,8 @@ public class MyShiroRealm extends AuthorizingRealm{
             }
             
         }
-        return authorizationInfo;
+        return authorizationInfo;*/
+       return null;
     }
 
     /**

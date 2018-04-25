@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.shiro;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
