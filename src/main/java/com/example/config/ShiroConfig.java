@@ -74,9 +74,9 @@ public class ShiroConfig {
         //如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login_admin");
         //登录后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("");
+        shiroFilterFactoryBean.setSuccessUrl("usersPage");
         //未授权界面
-        shiroFilterFactoryBean.setUnauthorizedUrl("");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
         //拦截器
         Map<String,String> filterChainDefinitionMap = new HashMap<>();
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
