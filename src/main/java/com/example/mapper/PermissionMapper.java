@@ -15,6 +15,20 @@ import java.util.Map;
  * @date 2018/4/24 0024 20:37
  */
 public interface PermissionMapper extends MyMapper<Permission> {
+
+    @Select("SELECT * FROM permission")
+    @Results({
+            @Result(property = "permsId",column = "perms_id"),
+            @Result(property = "permsDesc",column = "perms_desc"),
+            @Result(property = "permsResType",column = "perms_res_type"),
+            @Result(property = "permsResUrl",column = "perms_res_url"),
+            @Result(property = "permsParentId",column = "perms_parent_id"),
+            @Result(property = "permsParentIds",column = "perms_parent_ids"),
+            @Result(property = "permsAvailable",column = "perms_available")
+    })
+    List<Permission> queryAll();
+
+
     @Select("<script>" +
             "SELECT * " +
             "FROM permission p LEFT JOIN role_permission rp " +
