@@ -2,7 +2,9 @@ package com.example.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.example.entity.Permission;
+import com.example.mapper.PermissionMapper;
 import com.example.service.PermissionService;
+import com.example.service.impl.PermissionServiceImpl;
 import com.example.shiro.MyShiroRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
@@ -30,7 +32,7 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
     @Autowired
-    private PermissionService permissionService;
+    private PermissionMapper mapper;
 
     @Value("${spring.redis.host}")
     private String host;
@@ -52,6 +54,7 @@ public class ShiroConfig {
     /**
      * shiroDialect,为了在thymeleaf里使用shiro的标签的bean
      */
+    @Bean
     public ShiroDialect shiroDialect(){
         return new ShiroDialect();
     }
@@ -66,6 +69,7 @@ public class ShiroConfig {
      * 2.当设置多个过滤器时，全部验证通过，才是为通过
      * 3.部分过滤器可以指定参数，如perms，roles
      */
+    @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
         System.out.println("------->ShiroFilterFactoryBean.shiroFilter");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -81,6 +85,7 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap = new HashMap<>();
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/logout", "logout");
+        filterChainDefinitionMap.put("/bootstrap/**","anon");
         filterChainDefinitionMap.put("/css/**","anon");
         filterChainDefinitionMap.put("/js/**","anon");
         filterChainDefinitionMap.put("/img/**","anon");
@@ -88,14 +93,14 @@ public class ShiroConfig {
         //<!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         //自定义加载权限关系
-        List<Permission> permissionList = permissionService.queryAll();
+        List<Permission> permissionList = mapper.queryAll();
         for (Permission permission : permissionList) {
             if(StringUtil.isNotEmpty(permission.getPermsResUrl())){
                 String perms = "perms[" + permission.getPermsResUrl() + "]";
                 filterChainDefinitionMap.put(permission.getPermsResUrl(), perms);
             }
         }
-        filterChainDefinitionMap.put("/**","authc");
+        filterChainDefinitionMap.put("/**","anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
