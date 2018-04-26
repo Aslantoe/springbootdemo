@@ -25,10 +25,10 @@ public class RedisConfig extends CachingConfigurerSupport{
     @Value("${spring.redis.timeout}")
     private int timeout;
 
-    @Value("${spring.redis.pool.max-idle}")
+    @Value("${spring.redis.jedis.pool.max-idle}")
     private int maxIdle;
 
-    @Value("${spring.redis.pool.max-wait}")
+    @Value("${spring.redis.jedis.pool.max-wait}")
     private long maxWaitMillis;
 
     @Bean
