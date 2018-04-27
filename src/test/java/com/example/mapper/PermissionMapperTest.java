@@ -41,5 +41,12 @@ public class PermissionMapperTest {
             System.out.println(permission.toString());
         }
     }
+    @Test
+    public void queryAll() throws Exception {
+        List<Permission> list = mapper.queryAll();
+        for (Permission permission : list) {
+            System.out.println(permission.toString());
+        }
+    }
 
 }
