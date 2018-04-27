@@ -4,11 +4,14 @@ import com.example.entity.UserInfo;
 import com.example.entity.UserRole;
 import com.example.mapper.UserRoleMapper;
 import com.example.service.UserInfoService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.util.StringUtil;
 
 import java.util.List;
 
@@ -20,6 +23,20 @@ import java.util.List;
 public class UserInfoServiceImpl extends BaseService<UserInfo> implements UserInfoService {
     @Autowired
     private UserRoleMapper userRoleMapper;
+
+    @Override
+    public PageInfo<UserInfo> selectByPage(UserInfo user, int start, int length) {
+        int page = start/length + 1;
+        Example example = new Example(UserInfo.class);
+        Example.Criteria criteria = example.createCriteria();
+        if(StringUtil.isNotEmpty(user.getUserEmail())){
+            criteria.andLike("userEmail",user.getUserEmail());
+        }
+       //分页查询
+        PageHelper.startPage(page,length);
+        List<UserInfo> userInfoList = getByExample(example);
+        return new PageInfo<>(userInfoList);
+    }
 
     @Override
     public UserInfo getUserInfoByName(String username) {

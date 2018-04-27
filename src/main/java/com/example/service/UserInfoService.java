@@ -1,12 +1,18 @@
 package com.example.service;
 
 import com.example.entity.UserInfo;
+import com.github.pagehelper.PageInfo;
 
 /**
  * @author jack
  * @date 2018/4/23 15:57
  */
 public interface UserInfoService extends IService<UserInfo>{
+
+    /**
+     * 分页
+     */
+    PageInfo<UserInfo> selectByPage(UserInfo user, int start, int length);
     /**
      * 根据用户姓名获取用户信息
      * @param name 姓名
