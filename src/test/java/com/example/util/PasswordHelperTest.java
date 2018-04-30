@@ -14,7 +14,7 @@ public class PasswordHelperTest {
     public void encryptPassword() throws Exception {
         PasswordHelper helper = new PasswordHelper();
         UserInfo userInfo = new UserInfo();
-        userInfo.setUserEmail("jackbu@gmail.com");
+        userInfo.setUserEmail("jackbu1994@163.com");
         userInfo.setUserPassword("admin");
         helper.encryptPassword(userInfo);
         System.out.println(userInfo.toString());
