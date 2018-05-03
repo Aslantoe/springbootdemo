@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.entity.Film;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -41,5 +42,13 @@ public interface FilmService {
      * @param genre 类型
      * @return 电影集合
      */
-    List<Film> gerFilmsByNav(String country,String director,String genre);
+    List<Film> getFilmsByNav(String country,String director,String genre);
+
+    /**
+     * 分页查询
+     * @param currentPage 当前页数
+     * @param pageSize 每页记录数
+     * @return 电影集合
+     */
+    PageInfo<Film> getFilmsByPage(Integer currentPage, int pageSize);
 }
