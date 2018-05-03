@@ -3,6 +3,8 @@ package com.example.service.impl;
 import com.example.entity.Film;
 import com.example.mapper.FilmMapper;
 import com.example.service.FilmService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,8 +43,17 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public List<Film> gerFilmsByNav(String country, String director, String genre) {
+    public List<Film> getFilmsByNav(String country, String director, String genre) {
         return mapper.getFilmsByNav(country,director,genre);
     }
+
+
+    @Override
+    public PageInfo<Film> getFilmsByPage(Integer currentPage, int pageSize) {
+        PageHelper.startPage(currentPage,pageSize);
+        List<Film> filmList = mapper.findFilmsByPage();
+        return new PageInfo<>(filmList);
+    }
+
 
 }
