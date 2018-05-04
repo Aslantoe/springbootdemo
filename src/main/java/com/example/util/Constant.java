@@ -7,4 +7,9 @@ package com.example.util;
  */
 public class Constant {
     public static final int STATE_LOCKED = 2;
+
+    /**
+     * 每页电影数量
+     */
+    public static final int PAGE_SIZE = 4;
 }
