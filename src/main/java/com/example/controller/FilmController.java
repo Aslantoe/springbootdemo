@@ -2,6 +2,8 @@ package com.example.controller;
 
 import com.example.entity.Film;
 import com.example.service.impl.FilmServiceImpl;
+import com.example.util.Constant;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +33,7 @@ public class FilmController {
         map.addAttribute("countries",countries);
         map.addAttribute("directors",directors);
         map.addAttribute("genres",genres);
+
         return "index";
     }
 
@@ -45,10 +48,16 @@ public class FilmController {
         }
     }
 
-    @RequestMapping(value = "getFilmsByNav",method = RequestMethod.POST)
+    @RequestMapping(value = "/getFilmsByNav",method = RequestMethod.POST)
     @ResponseBody
     public List<Film> getFilmsByNav(String country, String director, String genre){
-        return filmService.gerFilmsByNav(country, director, genre);
+        return filmService.getFilmsByNav(country, director, genre);
     }
 
+    @RequestMapping(value = "/getFilmsByPage",method = RequestMethod.POST)
+    @ResponseBody
+    public PageInfo<Film> getFilmsByPage(Integer currPage){
+        System.out.println("currPage:"+currPage);
+        return filmService.getFilmsByPage(currPage,Constant.PAGE_SIZE);
+    }
 }
