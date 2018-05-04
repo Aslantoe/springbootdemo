@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>爱电影网</title>
+    <title>1994电影网</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/css/thumbnail-gallery.css">
+    <link rel="stylesheet" href="/bootstrap/css/page.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -17,7 +18,7 @@
         <!--问题:导航栏不是矩形-->
         <nav class="navbar navbar-inverse"  role="navigation">
                 <div class="navbar-header col-md-2">
-                    <a class="navbar-brand" href="#">爱电影网</a>
+                    <a class="navbar-brand" href="#">1994电影网</a>
                 </div>
                 <div class="col-md-3">
                     <ul class="nav navbar-nav">
@@ -32,7 +33,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">导演<b class="caret"></b></a>
                             <ul  class="dropdown-menu">
-                                <li th:each="director : ${directors}" >
+                                <li th:each="director : ${directors}">
                                     <a th:text="${director}" href="#"></a>
                                 </li>
                             </ul>
@@ -115,104 +116,24 @@
 </div>
 <!--轮播-->
 
-<!--电影列表展示,固定列表-->
+<!--电影列表展示-->
 <div id="gallery" class="container gallery-container">
     <div class="tz-gallery">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a>
-                        <img src="img/gallery/wolf.webp" alt="truelove" style="height: 345px;width: 100%">
-                    </a>
-                    <div class="caption">
-                        <h3>华尔街之狼</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a>
-                        <img src="/img/gallery/lovedrugs.webp" alt="lovedrugs" style="height: 345px;width: 100%">
-                    </a>
-                    <div class="caption">
-                        <h3>爱情与灵药</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a href="#">
-                        <img src="/img/gallery/malena.webp" alt="malena">
-                    </a>
-                    <div class="caption">
-                        <h3>西西里的美丽传说</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a >
-                        <img src="/img/gallery/1900.webp" alt="Coast">
-                    </a>
-                    <div class="caption">
-                        <h3>海上钢琴师</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a >
-                        <img src="/img/gallery/poetes.webp" alt="Rails">
-                    </a>
-                    <div class="caption">
-                        <h3>死亡诗社</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a>
-                        <img src="/img/gallery/manchester.webp" alt="Traffic" style="height: 326px;width: 100%">
-                    </a>
-                    <div class="caption">
-                        <h3>海边的曼切斯特</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a >
-                        <img src="/img/gallery/wonder.webp" alt="Rails" style="height: 326px;width: 100%">
-                    </a>
-                    <div class="caption">
-                        <h3>奇迹男孩</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a>
-                        <img src="/img/gallery/bird.webp" alt="Traffic" style="height: 326px;width: 100%">
-                    </a>
-                    <div class="caption">
-                        <h3>伯德小姐</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                </div>
-            </div>
+        <div id="gallery-row" class="row">
+
         </div>
     </div>
 </div>
-<!--电影列表展示,固定列表-->
+<!--电影列表展示-->
+
+<!--分页-->
+<div id="pageContainer" class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div id="page" class="page_div"></div>
+    </div>
+  </div>
+</div>
 
 <!--影片详情-->
 <div class="container-fluid" style="display: none">
@@ -244,5 +165,50 @@
 
 <script src="/bootstrap/js/jquery-3.1.1.js"></script>
 <script src="/bootstrap/js/home.js"></script>
+<script src="/bootstrap/js/paging.js"></script>
+<script>
+
+    ajaxTest(1);
+    function ajaxTest(num) {
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "getFilmsByPage",
+            data: {currPage: num},
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                var str = "";
+                $.each(data.list,function (i,item) {
+                    str += ("<div class=\"col-md-3\">\n" +
+                        "                <div class=\"thumbnail\">\n" +
+                        "                    <a>\n" +
+                        "                        <img src=\""+item.filmGallery+"\" alt=\""+item.filmCnName+"\" style=\"height: 345px;width: 100%\">\n" +
+                        "                    </a>\n" +
+                        "                    <div class=\"caption\">\n" +
+                        "                        <h3>"+item.filmCnName+"</h3>\n" +
+                        "                        <p>"+item.filmIntroduction.substr(0,42)+"</p>\n" +
+                        "                    </div>\n" +
+                        "                </div>\n" +
+                        "            </div>");
+                   console.log(item.filmCnName);
+                });
+                $("#gallery-row").html(str);
+                //分页
+                $("#page").paging({
+                    pageNo: data.pageNum,
+                    totalPage: data.pages,
+                    totalSize: data.pageSize,
+                    callback:function (num) {
+                        ajaxTest(num);
+
+                    }
+                });
+            }
+        });
+    }
+
+</script>
+
 </body>
 </html>
