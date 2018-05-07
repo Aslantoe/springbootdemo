@@ -33,9 +33,11 @@ function getFilmsByNav(param,temp) {
                 });
                 $("#getFilms-row").html(str);
                 /*隐藏轮播图和影视列表*/
-                $("#carousel").attr("style","visibility:hidden");
-                $("#gallery").attr("style","visibility:hidden");
-                $("#pageContainer").attr("style","visibility:hidden");
+                $("#carousel").attr("style","display:none");
+                $("#gallery").attr("style","display:none");
+                $("#pageContainer").attr("style","display:none");
+                $("#filmInfo").attr("style","display:none");
+
             }
         }
     });
@@ -94,9 +96,10 @@ function getVagueFilm() {
                 });
                 $("#getFilms-row").html(str);
                 /*隐藏轮播图和影视列表*/
-                $("#carousel").attr("style","visibility:hidden");
-                $("#gallery").attr("style","visibility:hidden");
-                $("#pageContainer").attr("style","visibility:hidden");
+                $("#carousel").attr("style","display:none");
+                $("#gallery").attr("style","display:none");
+                $("#pageContainer").attr("style","display:none");
+                $("#filmInfo").attr("style","display:none");
 
             }else{
                 alert("没有找到相关影片！");
