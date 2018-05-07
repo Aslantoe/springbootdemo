@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/css/thumbnail-gallery.css">
     <link rel="stylesheet" href="/bootstrap/css/page.css">
+    <link rel="stylesheet" href="/bootstrap/css/carousel.css">
+    <link rel="stylesheet"  href="/bootstrap/css/filminfo.css" type="text/css"/>
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 <!--导航条-->
@@ -92,14 +93,14 @@
         </ol>
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
-            <div  class="item active">
-               <a href="#"> <img style="width: 100%" src="img/poster/interstellar.webp" alt="interstellar"></a>
+            <div class="item active">
+               <a href="#"> <img class="poster" src="img/poster/interstellar.webp" alt="星际穿越"></a>
             </div>
             <div class="item">
-                <img href="#" style="width: 100%" src="img/poster/martian.jpg" alt="martain">
+              <a href="#"> <img class="poster" src="img/poster/martian.jpg" alt="火星救援"></a>
             </div>
-            <div  class="item" >
-                <img href="#" style="width: 100%" src="img/poster/buda.jpg" alt="buda">
+            <div class="item">
+              <a href="#"> <img class="poster" src="img/poster/buda.jpg" alt="大佛普拉斯"> </a>
             </div>
         </div>
         <!-- 轮播（Carousel）导航 -->
@@ -136,40 +137,22 @@
 </div>
 
 <!--影片详情-->
-<div class="container-fluid" style="display: none">
-    <div class="row resource-con">
-        <div class="col-md-6 col-md-offset-1 fl-img">
-            <a class="imglink" href="#" target="_blank"><img src="../static/img/gallery/bird.webp" /></a>
-        </div>
-        <div class="col-md-6 fl-info">
-            <ul>
-                <li class="ib"><span>中文名：</span><strong>西部世界</strong></li>
-                <li class="ib"><span>英文名：</span><strong>WestWorld</strong></li>
-                <li class="ib"><span>地区：</span><strong>美国</strong></li>
-                <li class="ib"><span>片长：</span><strong>126分钟</strong></li>
-                <li class="ib"><span>语  言：</span><strong>英语</strong></li>
-                <li class="ib"><span>上映日期：</span><strong>2016-10-03 周一</strong></li>
-                <li class="ib"><span>豆瓣评分：</span><strong>9.2</strong></li>
-                <li class="ib"><span>类型：</span><strong>科幻/惊悚/悬疑/西部</strong></li>
-                <li id="director"><span>导演：</span>乔纳森·诺兰</li>
-                <li id="actor"><span>主演：</span>埃文·蕾切尔·伍德 / 安东尼·霍普金斯 / 艾德·哈里斯 / 詹姆斯·麦斯登 / 英格丽德·波尔索·贝 / 坦迪·牛顿 / 罗德里格·桑托罗 / 珊农·沃德华德 / 米兰达·奥图 / 杰弗里·怀特 / 安吉拉·萨拉弗安 / 库里·格拉汉姆 / 凯尔·柏海莫 / 杰弗里·丹尼尔·菲利</li>
-                <a id="favorite">添加到我的收藏</a>
-            </ul>
-        </div>
+<div id="filmInfo" class="container-fluid" style="display: none">
+    <div id="filmInfo-detail" class="row resource-con">
+
     </div>
     <h3>
-        <i class="brieftitle">西部世界的剧情简介  · · · · · ·</i>
+        <i class="brieftitle"></i>
     </h3>
-    <div class="con"><span>J.J. Abrams的Bad Robot公司将目光由广播网转向了有线网——HBO今天宣布购入该公司开发的新剧试映集《西部世界》（Westworld），故事根据1973年的同名科幻电影改编。在遥远的未来，一座巨型高科技成人乐园建成，其中有西部世界，罗马世界，中世纪世界三大主题版块的机器人世界，它提供给游客杀戮与性欲的满足。这座巨大机械乐园的后台监控渐渐失去了对机器人的控制，游客被机器人杀死，所有想</span><a href="javascript:void(0)" class="f2">[展开全文]</a></div>
+    <div class="con"><span></span><a href="javascript:void(0)" class="f2">[展开全文]</a></div>
 </div>
 
 <script src="/bootstrap/js/jquery-3.1.1.js"></script>
 <script src="/bootstrap/js/home.js"></script>
 <script src="/bootstrap/js/paging.js"></script>
 <script>
-
-    ajaxTest(1);
-    function ajaxTest(num) {
+    ajaxPaging(1);
+    function ajaxPaging(num) {
         $.ajax({
             async: false,
             type: "POST",
@@ -182,16 +165,15 @@
                 $.each(data.list,function (i,item) {
                     str += ("<div class=\"col-md-3\">\n" +
                         "                <div class=\"thumbnail\">\n" +
-                        "                    <a>\n" +
-                        "                        <img src=\""+item.filmGallery+"\" alt=\""+item.filmCnName+"\" style=\"height: 345px;width: 100%\">\n" +
+                        "                    <a href='#'>\n" +
+                        "                        <img class=\"gallery\" src=\""+item.filmGallery+"\" alt=\""+item.filmCnName+"\" style=\"height: 345px;width: 100%\">\n" +
                         "                    </a>\n" +
                         "                    <div class=\"caption\">\n" +
                         "                        <h3>"+item.filmCnName+"</h3>\n" +
-                        "                        <p>"+item.filmIntroduction.substr(0,42)+"</p>\n" +
+                        "                        <p>"+item.filmIntroduction.substr(0,42)+"..."+"</p>\n" +
                         "                    </div>\n" +
                         "                </div>\n" +
                         "            </div>");
-                   console.log(item.filmCnName);
                 });
                 $("#gallery-row").html(str);
                 //分页
@@ -200,13 +182,73 @@
                     totalPage: data.pages,
                     totalSize: data.pageSize,
                     callback:function (num) {
-                        ajaxTest(num);
-
+                        ajaxPaging(num);
                     }
                 });
             }
         });
+        /*点击画报*/
+        $(document).ready(function () {
+            $(".gallery").click(function () {
+                   var filmName = $(this).attr("alt");
+                $.ajax({
+                    async:false,
+                    type: "POST",
+                    url: "getVagueFilms",
+                    data:{name:filmName},
+                    dataType:"json",
+                    success:function(data){
+                        if(!jQuery.isEmptyObject(data)){
+                            /*显示DIV*/
+                            $("#filmInfo").attr("style","visibility:visible");
+                            var str = "";
+                            var filmCnName = "";
+                            var introduction = "";
+                            $.each(data,function (i,item) {
+                                console.log(item);
+                                str += ("  <div class=\"col-md-6 col-md-offset-1 fl-img\">\n" +
+                                    "            <a class=\"imglink\" href=\"#\" target=\"_blank\"><img src=\""+item.filmGallery+"\" /></a>\n" +
+                                    "        </div>\n" +
+                                    "        <div class=\"col-md-6 fl-info\">\n" +
+                                    "            <ul>\n" +
+                                    "                <li class=\"ib\"><span>中文名：</span><strong>"+item.filmCnName+"</strong></li>\n" +
+                                    "                <li class=\"ib\"><span>英文名：</span><strong>"+item.filmEnName+"</strong></li>\n" +
+                                    "                <li class=\"ib\"><span>地区：</span><strong>"+item.filmCountry+"</strong></li>\n" +
+                                    "                <li class=\"ib\"><span>片长：</span><strong>"+item.filmMins+"</strong></li>\n" +
+                                    "                <li class=\"ib\"><span>语  言：</span><strong>"+item.filmLanguage+"</strong></li>\n" +
+                                    "                <li class=\"ib\"><span>上映日期：</span><strong>"+item.releaseDate.substring(0,10)+"</strong></li>\n" +
+                                    "                <li class=\"ib\"><span>豆瓣评分：</span><strong>"+item.filmScore+"</strong></li>\n" +
+                                    "                <li class=\"ib\"><span>类型：</span><strong>"+item.filmGenre+"</strong></li>\n" +
+                                    "                <li id=\"director\"><span>导演：</span>"+item.filmDirector+"</li>\n" +
+                                    "                <li id=\"actor\"><span>主演：</span>"+item.filmActor+"</li>\n" +
+                                    "                <a id=\"favorite\">添加到我的收藏</a>\n" +
+                                    "            </ul>\n" +
+                                    "        </div>");
+                                filmCnName = item.filmCnName;
+                                introduction = item.filmIntroduction;
+                            });
+                            $(".brieftitle").html(filmCnName+"的剧情简介.....");
+                            $(".con span").html(introduction.substring(0,200));
+                            $("#filmInfo-detail").html(str);
+                            /*隐藏轮播图和影视列表*/
+                            $("#carousel").attr("style","display:none");
+                            $("#gallery").attr("style","display:none");
+                            $("#pageContainer").attr("style","display:none");
+
+                        }
+                    },
+
+                });
+            });
+        });
     }
+
+    $(document).ready(function () {
+        $("#img .galleryNav").click(function () {
+            alert('sdf');
+        });
+    });
+
 
 </script>
 
