@@ -43,7 +43,8 @@ public interface FilmMapper {
      * @param name 电影名
      * @return 电影
      */
-    @Select("SELECT * FROM filminfo f where f.film_cnname LIKE CONCAT('%',#{name},'%') ")
+    @Select("SELECT * " +
+            "FROM filminfo f where f.film_cnname LIKE CONCAT('%',#{name},'%') ")
     @Results({@Result(property = "filmCnName",column = "film_cnname"),
               @Result(property = "filmEnName",column = "film_enname"),
               @Result(property = "filmPoster",column = "film_poster"),
@@ -80,39 +81,40 @@ public interface FilmMapper {
             " </script> ")
 
     @Results({@Result(property = "filmCnName",column = "film_cnname"),
-            @Result(property = "filmEnName",column = "film_enname"),
-            @Result(property = "filmPoster",column = "film_poster"),
+           // @Result(property = "filmEnName",column = "film_enname"),
+           // @Result(property = "filmPoster",column = "film_poster"),
             @Result(property = "filmGallery",column = "film_gallery"),
             @Result(property = "filmDirector",column = "film_director"),
-            @Result(property = "filmActor",column = "film_actor"),
+           // @Result(property = "filmActor",column = "film_actor"),
             @Result(property = "filmGenre",column = "film_genre"),
             @Result(property = "filmCountry",column = "film_country"),
-            @Result(property = "filmLanguage",column = "film_language"),
-            @Result(property = "releaseDate",column = "film_releasedate"),
-            @Result(property = "filmMins",column = "film_mins"),
+           // @Result(property = "filmLanguage",column = "film_language"),
+           // @Result(property = "releaseDate",column = "film_releasedate"),
+           // @Result(property = "filmMins",column = "film_mins"),
             @Result(property = "filmIntroduction",column = "film_introduction"),
-            @Result(property = "filmScore",column = "film_score"),
-            @Result(property = "filmLink",column = "film_link")
+           // @Result(property = "filmScore",column = "film_score"),
+           // @Result(property = "filmLink",column = "film_link")
     })
     List<Film> getFilmsByNav(@Param("country") String country,
                              @Param("director") String director,
                              @Param("genre") String genre);
 
-    @Select("SELECT * FROM filminfo order by film_id")
+    @Select("SELECT * " +
+            "FROM filminfo order by film_id")
     @Results({@Result(property = "filmCnName",column = "film_cnname"),
-            @Result(property = "filmEnName",column = "film_enname"),
-            @Result(property = "filmPoster",column = "film_poster"),
+           // @Result(property = "filmEnName",column = "film_enname"),
+           // @Result(property = "filmPoster",column = "film_poster"),
             @Result(property = "filmGallery",column = "film_gallery"),
-            @Result(property = "filmDirector",column = "film_director"),
-            @Result(property = "filmActor",column = "film_actor"),
-            @Result(property = "filmGenre",column = "film_genre"),
-            @Result(property = "filmCountry",column = "film_country"),
-            @Result(property = "filmLanguage",column = "film_language"),
-            @Result(property = "releaseDate",column = "film_releasedate"),
-            @Result(property = "filmMins",column = "film_mins"),
+           // @Result(property = "filmDirector",column = "film_director"),
+           // @Result(property = "filmActor",column = "film_actor"),
+           // @Result(property = "filmGenre",column = "film_genre"),
+           // @Result(property = "filmCountry",column = "film_country"),
+           // @Result(property = "filmLanguage",column = "film_language"),
+           // @Result(property = "releaseDate",column = "film_releasedate"),
+           // @Result(property = "filmMins",column = "film_mins"),
             @Result(property = "filmIntroduction",column = "film_introduction"),
-            @Result(property = "filmScore",column = "film_score"),
-            @Result(property = "filmLink",column = "film_link")
+          //  @Result(property = "filmScore",column = "film_score"),
+           // @Result(property = "filmLink",column = "film_link")
     })
     List<Film> findFilmsByPage();
 
