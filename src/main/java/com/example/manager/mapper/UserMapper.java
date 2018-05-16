@@ -1,25 +1,30 @@
-package com.example.mapper;
+package com.example.manager.mapper;
 
 
-import com.example.entity.UserInfo;
+import com.example.manager.entity.User;
+import com.example.manager.entity.UserWithRole;
 import com.example.util.MyMapper;
-import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.mapping.FetchType;
+
+
+import java.util.List;
 
 
 /**
  * 用户mapper
  * @author jack
- * @date 2018/4/20  16:28
  */
-public interface UserMapper extends MyMapper<UserInfo> {
+public interface UserMapper extends MyMapper<User> {
 
-    /**
+    List<UserWithRole> findUserWithRole(Long userId);
+
+    User findUserProfile(User user);
+
+  /*  *//**
      * 根据姓名查找用户信息
      * 没有用到，用了tk.mybatis封装好的方法。---可以通过写sql语句来扩展复杂的操作
      * @param name 姓名
      * @return 用户信息
-     */
+     *//*
     @Select("SELECT * FROM userinfo u WHERE u.user_name = #{name}")
     @Results({
             @Result(id = true,property = "userId",column = "user_id"),
@@ -34,13 +39,13 @@ public interface UserMapper extends MyMapper<UserInfo> {
             @Result(property = "userAvatar",column = "user_avatar"),
             @Result(property = "userState",column = "user_state")
     })
-    UserInfo getUserInfoByUserName(@Param("name") String name);
+    User getUserInfoByUserName(@Param("name") String name);
 
-    /**
+    *//**
      * 根据邮箱查找用户信息
      * @param email 邮箱
      * @return 用户信息
-     */
+     *//*
     @Select("SELECT * FROM userinfo u WHERE u.user_email = #{email}")
     @Results({
             @Result(id = true,property = "userId",column = "user_id"),
@@ -55,7 +60,7 @@ public interface UserMapper extends MyMapper<UserInfo> {
             @Result(property = "userAvatar",column = "user_avatar"),
             @Result(property = "userState",column = "user_state")
     })
-    UserInfo getUserInfoByUserEmail(@Param("email") String email);
+    User getUserInfoByUserEmail(@Param("email") String email);
 
 
     @Select("SELECT * FROM userinfo u WHERE u.user_id = #{uid}")
@@ -72,8 +77,8 @@ public interface UserMapper extends MyMapper<UserInfo> {
             @Result(property = "userAvatar",column = "user_avatar"),
             @Result(property = "userState",column = "user_state"),
             @Result(property = "roleList",column = "user_id",
-                    many = @Many(select = "com.example.mapper.RoleMapper.getAllRolesByUid",fetchType = FetchType.LAZY))
+                    many = @Many(select = "RoleMapper.getAllRolesByUid",fetchType = FetchType.LAZY))
     })
-    UserInfo getUserInfoById(@Param("uid") Integer uid);
+    User getUserInfoById(@Param("uid") Integer uid);*/
 
 }
