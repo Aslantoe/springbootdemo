@@ -31,6 +31,14 @@ public class UserMapperTest {
         }
     }
 
+    @Test
+    public void findUserProfile(){
+        User user = new User();
+        user.setUserId(23L);
+        User user1 = mapper.findUserProfile(user);
+        System.out.println(user1.toString());
+    }
+
 
     @Test
     public void findAllUser(){
