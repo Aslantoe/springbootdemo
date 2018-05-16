@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.example.manager.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
