@@ -2,99 +2,190 @@ package com.example.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
  * @author jack
- * @date 2018/4/20  15:07
  */
-@Table(name = "permission")
+@Table(name = "t_menu")
 public class Permission implements Serializable {
+    private static final long serialVersionUID = -2811007396465741498L;
+
+    public static final String TYPE_MENU = "0";
+
+    public static final String TYPE_BUTTON = "1";
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "perms_id")
-    private Integer permsId;
-    @Column(name = "perms_desc")
-    private String permsDesc;
-    @Column(name = "perms_res_type")
-    private String permsResType;
-    @Column(name = "perms_res_url")
-    private String permsResUrl;
-    @Column(name = "perms_parent_id")
-    private String permsParentId;
-    @Column(name = "perms_parent_ids")
-    private String permsParentIds;
-    @Column(name = "perms_available")
-    private Integer permsAvailable;
+    @GeneratedValue(generator = "JDBC")
+    @Column(name = "MENU_ID")
+    private Long menuId;
 
+    @Column(name = "PARENT_ID")
+    private Long parentId;
 
-    public Integer getPermsId() {
-        return permsId;
+    @Column(name = "MENU_NAME")
+    private String menuName;
+
+    @Column(name = "URL")
+    private String url;
+
+    @Column(name = "PERMS")
+    private String perms;
+
+    @Column(name = "ICON")
+    private String icon;
+
+    @Column(name = "TYPE")
+    private String type;
+
+    @Column(name = "ORDER_NUM")
+    private Long orderNum;
+
+    @Column(name = "CREATE_TIME")
+    private Date createTime;
+
+    @Column(name = "MODIFY_TIME")
+    private Date modifyTime;
+
+    /**
+     * @return MENU_ID
+     */
+    public Long getMenuId() {
+        return menuId;
     }
 
-    public void setPermsId(Integer permsId) {
-        this.permsId = permsId;
+    /**
+     * @param menuId
+     */
+    public void setMenuId(Long menuId) {
+        this.menuId = menuId;
     }
 
-    public String getPermsDesc() {
-        return permsDesc;
+    /**
+     * @return PARENT_ID
+     */
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setPermsDesc(String permsDesc) {
-        this.permsDesc = permsDesc;
+    /**
+     * @param parentId
+     */
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
-    public String getPermsResType() {
-        return permsResType;
+    /**
+     * @return MENU_NAME
+     */
+    public String getMenuName() {
+        return menuName;
     }
 
-    public void setPermsResType(String permsResType) {
-        this.permsResType = permsResType;
+    /**
+     * @param menuName
+     */
+    public void setMenuName(String menuName) {
+        this.menuName = menuName == null ? "" : menuName.trim();
     }
 
-    public String getPermsResUrl() {
-        return permsResUrl;
+    /**
+     * @return URL
+     */
+    public String getUrl() {
+        return url;
     }
 
-    public void setPermsResUrl(String permsResUrl) {
-        this.permsResUrl = permsResUrl;
+    /**
+     * @param url
+     */
+    public void setUrl(String url) {
+        this.url = url == null ? "" : url.trim();
     }
 
-    public String getPermsParaentId() {
-        return permsParentId;
+    /**
+     * @return PERMS
+     */
+    public String getPerms() {
+        return perms;
     }
 
-    public void setPermsParaentId(String permsParaentId) {
-        this.permsParentId = permsParaentId;
+    /**
+     * @param perms
+     */
+    public void setPerms(String perms) {
+        this.perms = perms == null ? "" : perms.trim();
     }
 
-    public String getPermsParentIds() {
-        return permsParentIds;
+    /**
+     * @return ICON
+     */
+    public String getIcon() {
+        return icon;
     }
 
-    public void setPermsParentIds(String permsParentIds) {
-        this.permsParentIds = permsParentIds;
+    /**
+     * @param icon
+     */
+    public void setIcon(String icon) {
+        this.icon = icon == null ? "" : icon.trim();
     }
 
-    public Integer getPermsAvailable() {
-        return permsAvailable;
+    /**
+     * @return TYPE
+     */
+    public String getType() {
+        return type;
     }
 
-    public void setPermsAvailable(Integer permsAvailable) {
-        this.permsAvailable = permsAvailable;
+    /**
+     * @param type
+     */
+    public void setType(String type) {
+        this.type = type == null ? "" : type.trim();
     }
 
-
-    @Override
-    public String toString() {
-        return "Permission{" +
-                "permsId=" + permsId +
-                ", permsDesc='" + permsDesc + '\'' +
-                ", permsResType='" + permsResType + '\'' +
-                ", permsResUrl='" + permsResUrl + '\'' +
-                ", permsParentId='" + permsParentId + '\'' +
-                ", permsParentIds='" + permsParentIds + '\'' +
-                ", permsAvailable=" + permsAvailable +
-                '}';
+    /**
+     * @return ORDER_NUM
+     */
+    public Long getOrderNum() {
+        return orderNum;
     }
+
+    /**
+     * @param orderNum
+     */
+    public void setOrderNum(Long orderNum) {
+        this.orderNum = orderNum;
+    }
+
+    /**
+     * @return CREATE_TIME
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * @param createTime
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    /**
+     * @return MODIFY_TIME
+     */
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    /**
+     * @param modifyTime
+     */
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
 }
