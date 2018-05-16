@@ -38,9 +38,6 @@ public class User implements Serializable{
     @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "DEPT_ID")
-    private Long deptId;
-
     @Column(name = "EMAIL")
 
     private String email;
@@ -115,20 +112,6 @@ public class User implements Serializable{
      */
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
-    }
-
-    /**
-     * @return DEPT_ID
-     */
-    public Long getDeptId() {
-        return deptId;
-    }
-
-    /**
-     * @param deptId
-     */
-    public void setDeptId(Long deptId) {
-        this.deptId = deptId;
     }
 
     /**
@@ -261,5 +244,23 @@ public class User implements Serializable{
         this.roleName = roleName;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", status='" + status + '\'' +
+                ", crateTime=" + crateTime +
+                ", modifyTime=" + modifyTime +
+                ", lastLoginTime=" + lastLoginTime +
+                ", ssex='" + ssex + '\'' +
+                ", theme='" + theme + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", description='" + description + '\'' +
+                ", roleName='" + roleName + '\'' +
+                '}';
+    }
 }

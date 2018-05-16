@@ -6,7 +6,7 @@ import java.util.List;
  * @author jack
  * @date 2018/5/16 0016 23:31
  */
-public class UserWithRole extends UserInfo {
+public class UserWithRole extends User {
     private static final long serialVersionUID = -394205822352672578L;
 
     private Long RoleId;
@@ -29,4 +29,11 @@ public class UserWithRole extends UserInfo {
         this.roleIds = roleIds;
     }
 
+    @Override
+    public String toString() {
+        return "UserWithRole{" +
+                "RoleId=" + RoleId +
+                ", roleIds=" + roleIds +
+                '}';
+    }
 }
