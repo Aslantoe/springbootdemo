@@ -9,7 +9,7 @@ import java.util.Date;
  * @date 2018/5/16  22:53
  */
 @Table(name = "t_user")
-public class UserInfo implements Serializable{
+public class User implements Serializable{
     private static final long serialVersionUID = 5174769567803601093L;
 
     /**
