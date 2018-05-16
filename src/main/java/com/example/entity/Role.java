@@ -1,64 +1,100 @@
 package com.example.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author jack
- * @date 2018/4/20 0020 15:02
  */
-@Table(name = "role")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
-    private Integer roleId;
-    @Column(name = "role_name")
-    private String roleName;
-    @Column(name = "role_desc")
-    private String roleDesc;
-    @Column(name = "role_available")
-    private Boolean roleAvailable = Boolean.FALSE;
+@Table(name = "t_role")
+public class Role implements Serializable{
+    private static final long serialVersionUID = 4574403233407853026L;
 
-    public Integer getRoleId() {
+    @Id
+    @GeneratedValue(generator = "JDBC")
+    @Column(name = "ROLE_ID")
+    private Long roleId;
+
+    @Column(name = "ROLE_NAME")
+    private String roleName;
+
+    @Column(name = "REMARK")
+    private String remark;
+
+    @Column(name = "CREATE_TIME")
+    private Date createTime;
+
+    @Column(name = "MODIFY_TIME")
+    private Date modifyTime;
+
+    /**
+     * @return ROLE_ID
+     */
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    /**
+     * @param roleId
+     */
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
+    /**
+     * @return ROLE_NAME
+     */
     public String getRoleName() {
         return roleName;
     }
 
+    /**
+     * @param roleName
+     */
     public void setRoleName(String roleName) {
-        this.roleName = roleName;
+        this.roleName = roleName == null ? null : roleName.trim();
     }
 
-    public String getRoleDesc() {
-        return roleDesc;
+    /**
+     * @return REMARK
+     */
+    public String getRemark() {
+        return remark;
     }
 
-    public void setRoleDesc(String roleDesc) {
-        this.roleDesc = roleDesc;
+    /**
+     * @param remark
+     */
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
-    public Boolean getRoleAvailable() {
-        return roleAvailable;
+    /**
+     * @return CREATE_TIME
+     */
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setRoleAvailable(Boolean roleAvailable) {
-        this.roleAvailable = roleAvailable;
+    /**
+     * @param createTime
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
+    /**
+     * @return MODIFY_TIME
+     */
+    public Date getModifyTime() {
+        return modifyTime;
+    }
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "roleId=" + roleId +
-                ", roleName='" + roleName + '\'' +
-                ", roleDesc='" + roleDesc + '\'' +
-                ", roleAvailable=" + roleAvailable +
-                '}';
+    /**
+     * @param modifyTime
+     */
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }
