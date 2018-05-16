@@ -4,7 +4,6 @@ import com.example.common.service.IService;
 import com.example.manager.entity.User;
 import com.example.manager.entity.UserWithRole;
 
-import java.util.List;
 
 /**
  * @author jack
@@ -14,8 +13,6 @@ public interface UserService extends IService<User> {
     UserWithRole findById(Long userId);
 
     User findByName(String userName);
-
-    List<User> findUserWithDept(User user);
 
     void registUser(User user);
 
