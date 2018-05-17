@@ -1,6 +1,6 @@
-package com.example.mapper;
+package com.example.manager.mapper;
 
-import com.example.entity.Permission;
+import com.example.manager.entity.Permission;
 import com.example.util.MyMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
@@ -12,11 +12,17 @@ import java.util.Map;
 
 /**
  * @author jack
- * @date 2018/4/24 0024 20:37
  */
 public interface PermissionMapper extends MyMapper<Permission> {
 
-    @Select("SELECT * FROM permission")
+    List<Permission> findUserPermissions(String userName);
+
+    List<Permission> findUserMenus(String userName);
+
+    // 删除父节点，子节点变成顶级节点（根据实际业务调整）
+    void changeToTop(List<String> menuIds);
+
+    /*@Select("SELECT * FROM permission")
     @Results({
             @Result(property = "permsId",column = "perms_id"),
             @Result(property = "permsDesc",column = "perms_desc"),
@@ -68,5 +74,5 @@ public interface PermissionMapper extends MyMapper<Permission> {
             @Result(property = "permsParentIds",column = "perms_parent_ids"),
             @Result(property = "permsAvailable",column = "perms_available")
     })
-    List<Permission> queryPermissionsListWithSelected(@Param("rid") Integer rid);
+    List<Permission> queryPermissionsListWithSelected(@Param("rid") Integer rid);*/
 }
