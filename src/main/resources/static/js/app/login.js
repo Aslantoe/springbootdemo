@@ -59,7 +59,7 @@ function login() {
     
     $.ajax({
         type: "post",
-        url: ctx + "login",
+        url: ctx + "login_admin",
         data: {
             "username": username,
             "password": password,
