@@ -20,9 +20,6 @@ $(function() {
                 field: 'username',
                 title: '用户名'
             }, {
-                field: 'deptName',
-                title: '部门'
-            }, {
                 field: 'email',
                 title: '邮箱'
             }, {
