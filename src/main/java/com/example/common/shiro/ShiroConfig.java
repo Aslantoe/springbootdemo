@@ -44,10 +44,11 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         shiroFilterFactoryBean.setLoginUrl("/login_admin");
-        shiroFilterFactoryBean.setSuccessUrl("/manager/index");
+        shiroFilterFactoryBean.setSuccessUrl("/index");
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        filterChainDefinitionMap.put("/bootstrap/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/fonts/**", "anon");
@@ -56,6 +57,14 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/user/regist", "anon");
         filterChainDefinitionMap.put("/gifCode", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
+        /*電影*/
+        filterChainDefinitionMap.put("/index_film", "anon");
+        filterChainDefinitionMap.put("/player","anon");
+        filterChainDefinitionMap.put("/getVagueFilms","anon");
+        filterChainDefinitionMap.put("/getFilmsByNav","anon");
+        filterChainDefinitionMap.put("/getFilmsByPage","anon");
+        filterChainDefinitionMap.put("/drama/**", "anon");
+
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/**", "user");
 

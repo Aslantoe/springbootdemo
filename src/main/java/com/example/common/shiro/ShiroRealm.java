@@ -34,6 +34,7 @@ public class ShiroRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        System.out.println("授权。。。。。。");
         User user = (User) SecurityUtils.getSubject().getPrincipal();
         String userName = user.getUsername();
 
@@ -58,6 +59,7 @@ public class ShiroRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        System.out.println("认证。。。。。。。。");
         String userName = (String) token.getPrincipal();
         String password = new String((char[]) token.getCredentials());
 
