@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  *  SpringBootApplication 相当于@Configuration @ComponentScan @EnableAutoConfiguration
  */
 @SpringBootApplication
-@MapperScan("com.example.mapper")
+@MapperScan("com.example.*.mapper")
 public class SpringbootdemoApplication extends SpringBootServletInitializer{
 
 	/**
