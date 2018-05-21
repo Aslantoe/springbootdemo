@@ -1,11 +1,12 @@
 package com.example.controller;
 
-import com.example.entity.Film;
-import com.example.service.impl.FilmServiceImpl;
+import com.example.manager.entity.Film;
+import com.example.manager.service.impl.FilmServiceImpl;
 import com.example.util.Constant;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +23,15 @@ public class FilmController {
     @Autowired
     private FilmServiceImpl filmService;
 
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @RequestMapping(value = "/player",method = RequestMethod.GET)
+    public String player(String filmEnName,String filmCnName,Model model){
+        model.addAttribute("filmCnName",filmCnName);
+        model.addAttribute("filmEnName",filmEnName);
+        System.out.println("player-------->"+filmCnName+"__"+filmEnName);
+        return "player/filmplayer";
+    }
+
+    @RequestMapping(value = "/index_film",method = RequestMethod.GET)
     public String countris(ModelMap map){
         /**
          * 问题:模板代码
@@ -34,7 +43,7 @@ public class FilmController {
         map.addAttribute("directors",directors);
         map.addAttribute("genres",genres);
 
-        return "index";
+        return "index_film";
     }
 
     @RequestMapping(value = "/getVagueFilms",method = RequestMethod.POST)
