@@ -188,4 +188,19 @@ public class Permission implements Serializable {
         this.modifyTime = modifyTime;
     }
 
+    @Override
+    public String toString() {
+        return "Permission{" +
+                "menuId=" + menuId +
+                ", parentId=" + parentId +
+                ", menuName='" + menuName + '\'' +
+                ", url='" + url + '\'' +
+                ", perms='" + perms + '\'' +
+                ", icon='" + icon + '\'' +
+                ", type='" + type + '\'' +
+                ", orderNum=" + orderNum +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
+    }
 }

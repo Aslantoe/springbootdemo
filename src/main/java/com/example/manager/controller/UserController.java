@@ -65,9 +65,9 @@ public class UserController extends BaseController{
     @Log("获取用户信息")
     @RequestMapping("user/list")
     @ResponseBody
-    public Map<String, Object> userList(QueryRequest request, User user) {
+    public Map<String, Object> userList(QueryRequest request) {
         PageHelper.startPage(request.getPageNum(), request.getPageSize());
-        List<User> list = this.userService.selectByExample(user);
+        List<User> list = this.userService.selectAll();
         PageInfo<User> pageInfo = new PageInfo<User>(list);
         return getDataTable(pageInfo);
     }
