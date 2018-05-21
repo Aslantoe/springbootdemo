@@ -5,6 +5,7 @@ $(document).ready(function () {
    });
 });
 
+/*根据导航条搜索*/
 function getFilmsByNav(param,temp) {
     $.ajax({
         async:false,
@@ -148,7 +149,7 @@ function getFilmInfoByFilmName(filmName) {
                 $.each(data,function (i,item) {
                     console.log(item);
                     str += ("  <div class=\"col-md-6 col-md-offset-1 fl-img\">\n" +
-                        "            <a class=\"imglink\" href=\"#\" target=\"_blank\"><img src=\""+item.filmGallery+"\" /></a>\n" +
+                        "            <a class=\"imglink\"href=\"\/player?filmEnName="+item.filmEnName+"&filmCnName="+item.filmCnName+"\"><img src=\""+item.filmGallery+"\"/></a>\n" +
                         "        </div>\n" +
                         "        <div class=\"col-md-6 fl-info\">\n" +
                         "            <ul>\n" +
@@ -172,7 +173,7 @@ function getFilmInfoByFilmName(filmName) {
                 $(".con span").html(introduction.substring(0,200));
                 $("#filmInfo-detail").html(str);
             }
-        },
+        }
 
     });
 }

@@ -21,8 +21,7 @@ filminfo.css
 .btn-addfav a{ display:block; background:url(../images/addfav.png) no-repeat; width:212px; height:44px; line-height:40px; font-size:18px; font-family:"微软雅黑"; text-shadow:1px 1px 2px #333; color:#fff; text-indent:75px; margin:5px auto; overflow:hidden;cursor: pointer}
 .btn-addfav a.notfaved{ background-position:0 -44px;}
 .btn-addfav a:hover{ background-position:0 -88px;}
-.brieftitle{color: #5cd259
-}
+.brieftitle{color: #5cd259  }
 
 
 
