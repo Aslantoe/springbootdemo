@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<title>电影播放</title>
+
+<link rel="stylesheet" th:href="@{/css/reset.css}" type="text/css" />
+<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" type="text/css">
+<link rel="stylesheet" th:href="@{/css/willesPlay.css}" type="text/css"/>
+
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div id="willesPlay">
+	<div class="playHeader">
+		<div class="videoName">
+			<h2 th:text="${filmCnName}"></h2>
+			<h2 id="filmEnName" th:text="${filmEnName}"></h2>
+		</div>
+	</div>
+	<div class="playContent">
+		<div class="turnoff">
+			<ul>
+				<li><a href="javascript:;" title="喜欢" class="glyphicon glyphicon-heart-empty"></a></li>
+				<li><a href="javascript:;" title="关灯" class="btnLight on glyphicon glyphicon-sunglasses"></a></li>
+				<li><a href="javascript:;" title="分享" class="glyphicon glyphicon-share"></a></li>
+			</ul>
+		</div>
+		<video width="100%" height="100%" id="playVideo" controls="controls">
+			<source id="film_url" src="http://localhost:8080/drama/LadyBird.mp4" type="video/mp4"/>
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="/">下载视频</a>
+		</video>
+		<div class="playTip glyphicon glyphicon-play"></div>
+	</div>
+	<div class="playControll">
+		<div class="playPause playIcon"></div>
+		<div class="timebar">
+			<span class="currentTime">0:00:00</span>
+			<div class="progress">
+				<div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+				</div>
+			<span class="duration">0:00:00</span>
+		</div>
+		<div class="otherControl">
+			<span class="volume glyphicon glyphicon-volume-down"></span>
+			<span class="fullScreen glyphicon glyphicon-fullscreen"></span>
+			<div class="volumeBar">
+					<div class="volumewrap">
+						<div class="progress">
+						<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 8px;height: 40%;"></div>
+					</div>
+						</div>
+				</div>
+		</div>
+	</div>
+</div>
+			
+		</div>
+	</div>
+</div>
+
+
+<script th:src="@{/js/jquery-1.11.3.min.js}"></script>
+<script th:src="@{/js/willesPlay.js}"></script>
+<script>
+
+    $(document).ready(function () {
+        var filmEnName = $("#filmEnName").html();
+		console.log('为src赋值'+"http://localhost:8080/drama/"+filmEnName+".mp4");
+        var str = "<source id=\"film_url\" src=\"http://localhost:8080/drama/"+filmEnName+".mp4\" type=\"video/mp4\"/>";
+        $("#playVideo").html(str);
+
+    });
+</script>
+</body>
+</html>

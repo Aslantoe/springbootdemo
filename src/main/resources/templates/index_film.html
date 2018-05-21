@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1994电影网</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/thumbnail-gallery.css">
+    <link rel="stylesheet" href="/bootstrap/css/page.css">
+    <link rel="stylesheet" href="/bootstrap/css/carousel.css">
+    <link rel="stylesheet"  href="/bootstrap/css/filminfo.css" type="text/css"/>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--导航条-->
+<div id="navbar" class="container-fluid">
+    <div class="row">
+        <!--问题:导航栏不是矩形-->
+        <nav class="navbar navbar-inverse"  role="navigation">
+                <div class="navbar-header col-md-2">
+                    <a class="navbar-brand" href="#">1994电影网</a>
+                </div>
+                <div class="col-md-3">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">地区<b class="caret"></b></a>
+                            <ul id="country" class="dropdown-menu">
+                                <li th:each="country : ${countries}">
+                                    <a href="#" th:text="${country}"></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">导演<b class="caret"></b></a>
+                            <ul  class="dropdown-menu">
+                                <li th:each="director : ${directors}">
+                                    <a th:text="${director}" href="#"></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">类型<b class="caret"></b></a>
+                            <ul  class="dropdown-menu">
+                                <li  th:each="genre : ${genres}" >
+                                    <a th:text="${genre}" href="#"></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--style="margin-right: 200px;"-->
+                <!--style="margin-left: 70px"-->
+                <div class="col-md-4">
+                    <form class="navbar-form" role="search" target="iframe">
+                        <div class="form-group" >
+                            <input id="search" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="button" class="btn btn-success" onclick="getVagueFilm()">搜索</button>
+                    </form>
+                   <!-- <iframe id="id_iframe" name="iframe" style="display:none;"></iframe>-->
+                </div>
+                <!--style="float: right; margin-top: -50px;"-->
+                <div class="col-md-3">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>注册</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>登录</a></li>
+                    </ul>
+                </div>
+        </nav>
+    </div>
+</div>
+<!--导航条-->
+
+<!--点击搜索后显示,默认不显示-->
+<div id="getFilms" class="container gallery-container"  style="display: none">
+    <div class="tz-gallery">
+        <div id="getFilms-row" class="row">
+
+        </div>
+    </div>
+</div>
+
+<!--轮播-->
+<div id="carousel" class="container-fluid" style="margin-top: -20px">
+  <div class="row">
+    <div id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="item active">
+               <a href="#"> <img class="poster" src="img/poster/interstellar.webp" alt="星际穿越"></a>
+            </div>
+            <div class="item">
+              <a href="#"> <img class="poster" src="img/poster/martian.jpg" alt="火星救援"></a>
+            </div>
+            <div class="item">
+              <a href="#"> <img class="poster" src="img/poster/buda.jpg" alt="大佛普拉斯"> </a>
+            </div>
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+  </div>
+</div>
+<!--轮播-->
+
+<!--首页——电影列表展示-->
+<div id="gallery" class="container gallery-container">
+    <div class="tz-gallery">
+        <div id="gallery-row" class="row">
+
+        </div>
+    </div>
+</div>
+<!--首页——电影列表展示-->
+
+<!--分页-->
+<div id="pageContainer" class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div id="page" class="page_div"></div>
+    </div>
+  </div>
+</div>
+
+<!--影片详情-->
+<div id="filmInfo" class="container-fluid" style="display: none">
+    <div id="filmInfo-detail" class="row resource-con">
+
+    </div>
+    <h3>
+        <i class="brieftitle"></i>
+    </h3>
+    <div class="con"><span></span><a href="javascript:void(0)" class="f2">[展开全文]</a></div>
+</div>
+
+<script src="/bootstrap/js/jquery-3.1.1.js"></script>
+<script src="/bootstrap/js/home.js"></script>
+<script src="/bootstrap/js/paging.js"></script>
+<script>
+    /*分页*/
+    ajaxPaging(1);
+    function ajaxPaging(num) {
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "getFilmsByPage",
+            data: {currPage: num},
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                var str = "";
+                $.each(data.list,function (i,item) {
+                    str += ("<div class=\"col-md-3\">\n" +
+                        "                <div class=\"thumbnail\">\n" +
+                        "                    <a href='#'>\n" +
+                        "                        <img class=\"gallery\" src=\""+item.filmGallery+"\" alt=\""+item.filmCnName+"\" style=\"height: 345px;width: 100%\">\n" +
+                        "                    </a>\n" +
+                        "                    <div class=\"caption\">\n" +
+                        "                        <h3>"+item.filmCnName+"</h3>\n" +
+                        "                        <p>"+item.filmIntroduction.substr(0,42)+"..."+"</p>\n" +
+                        "                    </div>\n" +
+                        "                </div>\n" +
+                        "            </div>");
+                });
+                $("#gallery-row").html(str);
+                //分页
+                $("#page").paging({
+                    pageNo: data.pageNum,
+                    totalPage: data.pages,
+                    totalSize: data.pageSize,
+                    callback:function (num) {
+                        ajaxPaging(num);
+                    }
+                });
+            }
+        });
+        /*点击首页画报*/
+        $(document).ready(function () {
+            $(".gallery").click(function () {
+                var filmName = $(this).attr("alt");
+                getFilmInfoByFilmName(filmName);
+            });
+        });
+    }
+
+</script>
+
+</body>
+</html>
