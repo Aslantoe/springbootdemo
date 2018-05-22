@@ -23,8 +23,8 @@ public class FilmServiceImpl implements FilmService {
     private FilmMapper mapper;
 
     @Override
-    public List<String> getDistinctedCountry() {
-        return mapper.getDistinctedCountry();
+    public List<String> getDistinctedArea() {
+        return mapper.getDistinctedArea();
     }
 
     @Override
@@ -43,8 +43,8 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public List<Film> getFilmsByNav(String country, String director, String genre) {
-        return mapper.getFilmsByNav(country,director,genre);
+    public List<Film> getFilmsByNav(String area, String director, String genre) {
+        return mapper.getFilmsByNav(area,director,genre);
     }
 
 

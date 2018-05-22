@@ -3,7 +3,9 @@ package com.example.manager.controller;
 import com.example.common.annotation.Log;
 import com.example.common.controller.BaseController;
 import com.example.common.entity.ResponseBo;
+import com.example.manager.entity.Role;
 import com.example.manager.entity.User;
+import com.example.manager.service.RoleService;
 import com.example.manager.service.UserService;
 import com.example.util.MD5Utils;
 import com.example.util.vcode.Captcha;
@@ -14,12 +16,14 @@ import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author jack
@@ -30,6 +34,8 @@ public class LoginController extends BaseController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/login_admin")
     public String login(){
@@ -94,11 +100,22 @@ public class LoginController extends BaseController {
         return "403";
     }
 
-    @Log("访问系统")
+    @Log("用户登录")
     @RequestMapping("/index")
-    public String index_admin(Model model) {
+    public String index(Model model) {
         User user = super.getCurrentUser();
+        List<Role> roleList = this.roleService.findUserRole(user.getUsername());
+
+        for (Role role : roleList) {
+            if(role.getRoleName().contains("管理员")) {
+                model.addAttribute("user", user);
+                return "manager/index_admin";
+            }
+        }
+        String str = "hello word";
         model.addAttribute("user", user);
-        return "manager/index_admin";
+        model.addAttribute("str", str);
+        return "index_film";
+       // return "film/test";
     }
 }

@@ -14,7 +14,7 @@ public interface FilmService {
      * 获取影片地区
      * @return 地区集合
      */
-    List<String> getDistinctedCountry();
+    List<String> getDistinctedArea();
 
     /**
      * 获取影片导演
@@ -37,12 +37,12 @@ public interface FilmService {
 
     /**
      *  根据导航栏点击获取电影
-     * @param country 国家
+     * @param area 地区
      * @param director 导演
      * @param genre 类型
      * @return 电影集合
      */
-    List<Film> getFilmsByNav(String country,String director,String genre);
+    List<Film> getFilmsByNav(String area,String director,String genre);
 
     /**
      * 分页查询

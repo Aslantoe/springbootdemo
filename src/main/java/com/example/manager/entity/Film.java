@@ -16,7 +16,7 @@ public class Film implements Serializable{
     private String filmDirector;
     private String filmActor;
     private String filmGenre;
-    private String filmCountry;
+    private String filmArea;
     private String filmLanguage;
     private Date releaseDate;
     private String filmMins;
@@ -27,7 +27,7 @@ public class Film implements Serializable{
     public Film() {
     }
 
-    public Film(Integer filmId, String filmCnName, String filmEnName, String filmPoster, String filmGallery, String filmDirector, String filmActor, String filmGenre, String filmCountry, String filmLanguage, Date releaseDate, String filmMins, String filmIntroduction, Double filmScore, String filmLink) {
+    public Film(Integer filmId, String filmCnName, String filmEnName, String filmPoster, String filmGallery, String filmDirector, String filmActor, String filmGenre, String filmArea, String filmLanguage, Date releaseDate, String filmMins, String filmIntroduction, Double filmScore, String filmLink) {
         this.filmId = filmId;
         this.filmCnName = filmCnName;
         this.filmEnName = filmEnName;
@@ -36,7 +36,7 @@ public class Film implements Serializable{
         this.filmDirector = filmDirector;
         this.filmActor = filmActor;
         this.filmGenre = filmGenre;
-        this.filmCountry = filmCountry;
+        this.filmArea = filmArea;
         this.filmLanguage = filmLanguage;
         this.releaseDate = releaseDate;
         this.filmMins = filmMins;
@@ -109,12 +109,12 @@ public class Film implements Serializable{
         this.filmGenre = filmGenre;
     }
 
-    public String getFilmCountry() {
-        return filmCountry;
+    public String getFilmArea() {
+        return filmArea;
     }
 
-    public void setFilmCountry(String filmCountry) {
-        this.filmCountry = filmCountry;
+    public void setFilmArea(String filmArea) {
+        this.filmArea = filmArea;
     }
 
     public String getFilmLanguage() {
@@ -176,7 +176,7 @@ public class Film implements Serializable{
                 ", filmDirector='" + filmDirector + '\'' +
                 ", filmActor='" + filmActor + '\'' +
                 ", filmGenre='" + filmGenre + '\'' +
-                ", filmCountry='" + filmCountry + '\'' +
+                ", filmArea='" + filmArea + '\'' +
                 ", filmLanguage='" + filmLanguage + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", filmMins='" + filmMins + '\'' +

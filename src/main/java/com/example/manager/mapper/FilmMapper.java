@@ -18,9 +18,9 @@ public interface FilmMapper {
      * 获取去重复后影片的地区
      * @return 地区集合
      */
-    @Select("SELECT DISTINCT f.film_country FROM filminfo f")
-    @Results({@Result(property = "filmCountry",column = "film_country")})
-    List<String> getDistinctedCountry();
+    @Select("SELECT DISTINCT f.film_area FROM filminfo f")
+    @Results({@Result(property = "filmArea",column = "film_area")})
+    List<String> getDistinctedArea();
 
     /**
      * 获取去重复后的导演
@@ -52,7 +52,7 @@ public interface FilmMapper {
               @Result(property = "filmDirector",column = "film_director"),
               @Result(property = "filmActor",column = "film_actor"),
               @Result(property = "filmGenre",column = "film_genre"),
-              @Result(property = "filmCountry",column = "film_country"),
+              @Result(property = "filmArea",column = "film_area"),
               @Result(property = "filmLanguage",column = "film_language"),
               @Result(property = "releaseDate",column = "film_releasedate"),
               @Result(property = "filmMins",column = "film_mins"),
@@ -65,7 +65,7 @@ public interface FilmMapper {
 
     /**
      * 导航栏点击下拉列表获取电影
-     * @param country 国家
+     * @param area 地区
      * @param director 导演
      * @param genre 类型
      * @return 电影集合
@@ -74,7 +74,7 @@ public interface FilmMapper {
             "SELECT * " +
             "FROM filminfo f" +
             " <where> " +
-            " <if test=\"country != null\">AND f.film_country=#{country}</if> " +
+            " <if test=\"area != null\">AND f.film_area=#{area}</if> " +
             " <if test=\"director != null\">AND f.film_director=#{director}</if> " +
             " <if test=\"genre != null\">AND f.film_genre=#{genre}</if> " +
             " </where> " +
@@ -87,7 +87,7 @@ public interface FilmMapper {
             @Result(property = "filmDirector",column = "film_director"),
            // @Result(property = "filmActor",column = "film_actor"),
             @Result(property = "filmGenre",column = "film_genre"),
-            @Result(property = "filmCountry",column = "film_country"),
+            @Result(property = "filmArea",column = "film_area"),
            // @Result(property = "filmLanguage",column = "film_language"),
            // @Result(property = "releaseDate",column = "film_releasedate"),
            // @Result(property = "filmMins",column = "film_mins"),
@@ -95,7 +95,7 @@ public interface FilmMapper {
            // @Result(property = "filmScore",column = "film_score"),
            // @Result(property = "filmLink",column = "film_link")
     })
-    List<Film> getFilmsByNav(@Param("country") String country,
+    List<Film> getFilmsByNav(@Param("area") String area,
                              @Param("director") String director,
                              @Param("genre") String genre);
 
@@ -108,7 +108,7 @@ public interface FilmMapper {
            // @Result(property = "filmDirector",column = "film_director"),
            // @Result(property = "filmActor",column = "film_actor"),
            // @Result(property = "filmGenre",column = "film_genre"),
-           // @Result(property = "filmCountry",column = "film_country"),
+           // @Result(property = "filmArea",column = "film_area"),
            // @Result(property = "filmLanguage",column = "film_language"),
            // @Result(property = "releaseDate",column = "film_releasedate"),
            // @Result(property = "filmMins",column = "film_mins"),
