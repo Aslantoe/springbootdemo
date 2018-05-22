@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1994电影网</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bootstrap/css/thumbnail-gallery.css">
-    <link rel="stylesheet" href="/bootstrap/css/page.css">
-    <link rel="stylesheet" href="/bootstrap/css/carousel.css">
-    <link rel="stylesheet"  href="/bootstrap/css/filminfo.css" type="text/css"/>
+    <link rel="stylesheet" th:href="@{bootstrap/css/thumbnail-gallery.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{bootstrap/css/page.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{bootstrap/css/carousel.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{bootstrap/css/filminfo.css}" type="text/css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <!--导航条-->
 <div id="navbar" class="container-fluid">
     <div class="row">
@@ -25,9 +27,9 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">地区<b class="caret"></b></a>
-                            <ul id="country" class="dropdown-menu">
-                                <li th:each="country : ${countries}">
-                                    <a href="#" th:text="${country}"></a>
+                            <ul id="area" class="dropdown-menu">
+                                <li th:each="area : ${areas}">
+                                    <a href="#" th:text="${area}"></a>
                                 </li>
                             </ul>
                         </li>
@@ -49,8 +51,7 @@
                         </li>
                     </ul>
                 </div>
-                <!--style="margin-right: 200px;"-->
-                <!--style="margin-left: 70px"-->
+
                 <div class="col-md-4">
                     <form class="navbar-form" role="search" target="iframe">
                         <div class="form-group" >
@@ -58,13 +59,16 @@
                         </div>
                         <button type="button" class="btn btn-success" onclick="getVagueFilm()">搜索</button>
                     </form>
-                   <!-- <iframe id="id_iframe" name="iframe" style="display:none;"></iframe>-->
                 </div>
-                <!--style="float: right; margin-top: -50px;"-->
+
                 <div class="col-md-3">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>注册</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>登录</a></li>
+                    <ul th:if="${user != null}">
+                        <a th:text="${user.avatar}"></a>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right" th:if="${user == null}">
+                        <li><a href="#" ><span class="glyphicon glyphicon-user"></span>注册</a></li>
+                        <li data-toggle="modal" data-target="#myModal"><a href="#"><span class="glyphicon glyphicon-log-in"></span>登录</a></li>
                     </ul>
                 </div>
         </nav>
@@ -147,9 +151,50 @@
     <div class="con"><span></span><a href="javascript:void(0)" class="f2">[展开全文]</a></div>
 </div>
 
-<script src="/bootstrap/js/jquery-3.1.1.js"></script>
-<script src="/bootstrap/js/home.js"></script>
-<script src="/bootstrap/js/paging.js"></script>
+<!--登录-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form">
+                    <div class="form-toggle"></div>
+                    <div class="form-panel one">
+                        <div class="form-header">
+                            <h1 style="text-align: center">用户登录</h1>
+                        </div>
+                        <div class="form-content">
+                            <div class="form-group">
+                                <label for="username">用户名</label>
+                                <input type="text" name="username" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password">密码</label>
+                                <input type="password" name="password" />
+                            </div>
+                            <div class="form-group" style="margin: 0px;">
+                               <p><input style="text-align: left" type="checkbox" name="rememberme"/>&nbsp;&nbsp;记住我</p>
+                            </div>
+                            <div class="form-group">
+                                <button onclick="login()" id="loginFilmButton">登录</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script th:inline="javascript">
+    var ctx = [[@{/}]];
+
+</script>
+
+<script data-th-src="@{bootstrap/js/jquery-3.1.1.js}"></script>
+<script data-th-src="@{bootstrap/js/home.js}"></script>
+<script data-th-src="@{bootstrap/js/paging.js}"></script>
+<script data-th-src="@{js/film/login.js}"></script>
+
+
 <script>
     /*分页*/
     ajaxPaging(1);
